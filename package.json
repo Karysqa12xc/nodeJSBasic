@@ -1,0 +1,23 @@
+{
+  "name": "nodejsbasic",
+  "version": "1.0.0",
+  "description": "Học NodeJS cơ bản",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karysqa12xc/nodeJSBasic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Karysqa12xc/nodeJSBasic/issues"
+  },
+  "homepage": "https://github.com/Karysqa12xc/nodeJSBasic#readme",
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
