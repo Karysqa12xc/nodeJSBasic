@@ -2,17 +2,15 @@ import express from 'express';
 import 'dotenv/config';
 import configViewEngine from './configs/viewEngine';
 const app = express();
+import initWebRoute from "./route/web";
 const port = process.env.PORT || 8080;
-console.log(">>> check port", port);
+//setup view engine
 configViewEngine(app);
+//init web route
+initWebRoute(app)
 
-app.get('/', (req, res) => {
-    res.render(`index.ejs`);
-})
 
-app.get('/about', (req, res)=>{
-    res.send(`My name is nam`);
-})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 }) 
