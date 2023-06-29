@@ -1,5 +1,5 @@
 import  express, { Router } from "express";
-import homeController from "../controller/homeController"
+import homeController from "../controller/homeController";
 import { getAboutPage } from "../controller/aboutController";
 let router = express.Router();
 

@@ -3,6 +3,7 @@ import 'dotenv/config';
 import configViewEngine from './configs/viewEngine';
 const app = express();
 import initWebRoute from "./route/web";
+// import connection from './configs/connectDB';
 const port = process.env.PORT || 8080;
 //setup view engine
 configViewEngine(app);
