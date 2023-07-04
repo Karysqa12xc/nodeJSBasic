@@ -1,17 +1,21 @@
-import { json } from "body-parser";
 import pool from "../configs/connectDB";
 let getHomepage = async (req, res) => {
     const [rows, fields] = await pool.execute('SELECT * FROM `users`');
-    let check = await pool.execute('SELECT * FROM `users`');
-    console.log(check);
-    return res.render(`index.ejs`, { dataUser : rows, test: "abc string test"});
+    return res.render(`index.ejs`, { dataUser: rows });
 }
 
-let getDetailPage  = async (req, res) =>{
+let getDetailPage = async (req, res) => {
     let id = req.params.id;
     let [user] = await pool.execute("SELECT * FROM users WHERE id = ?", [id]);
     return res.send(JSON.stringify(user));
 }
+
+let createNewUser = async (req, res) => {
+    let {FirstName, LastName, Email, address} = req.body;
+    await pool.execute("INSERT INTO users(firstName, lastName, email, address) VALUES (?, ?, ?, ?)", 
+    [FirstName, LastName, Email, address]);
+    return res.redirect('/');
+}
 module.exports = {
-    getHomepage, getDetailPage
+    getHomepage, getDetailPage, createNewUser
 }

@@ -42,3 +42,13 @@ td {
 tr:hover {
     background-color: coral;
 }
+label{
+    display: block;
+}
+.create-user-container{
+    text-align: center;
+}
+.create-user-container .btn-submit{
+    margin-top: 15px;
+    
+}
