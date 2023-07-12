@@ -1,4 +1,5 @@
 import pool from "../configs/connectDB";
+import multer from "multer";
 let getHomepage = async (req, res) => {
     const [rows, fields] = await pool.execute('SELECT * FROM `users`');
     return res.render(`index.ejs`, { dataUser: rows });
@@ -36,6 +37,30 @@ let updateUserForm = async (req, res) => {
     await pool.execute(sqlUpdate, [FirstName, LastName, Email, address, id])
     return res.redirect('/');
 }
+let uploadFilePage = async (req, res) => {
+    return res.render("uploadFile.ejs");
+}
+
+const upload = multer().single('profile-pic');
+
+let handlerUploadFile = async (req, res) => {
+    
+    upload(req, res, function (err) {
+        if (req.fileValidationError) {
+            return res.send(req.fileValidationError);
+        }else if(!req.file){
+            return res.send("please select an image to upload");
+        }
+        else if(err instanceof multer.MulterError){
+            return res.send(err);
+        }
+        else if(err){
+            return res.send(err);
+        }
+        res.send(`You have uploaded this image: <hr/><img src="/imgs/${req.file.filename}" width="500"><hr /><a href="/upload">Upload another image</a>`);
+    });
+}
 module.exports = {
-    getHomepage, getDetailPage, createNewUser, deleteUser, editInfoUser, updateUserForm
+    getHomepage, getDetailPage, createNewUser, deleteUser, editInfoUser, updateUserForm, 
+    uploadFilePage, handlerUploadFile
 }
