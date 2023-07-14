@@ -52,12 +52,12 @@ label{
     margin-top: 15px; 
     cursor: pointer;
 }
-.action-table form{
-    display:  flex;
-}
 .update-user-container{
     text-align: center;
     padding: 15px;
+}
+.dis_Undernine{
+    text-decoration: none;
 }
 .update-user-container label{
     display: block;
@@ -72,6 +72,9 @@ label{
 .upload-file-container label{
     display: block;
 }
-.btn-save-file{
-
+.upload-file-container h1{
+    margin-top: 15px;
+}
+hr{
+    border-top:3px solid black !important;
 }
